@@ -25,7 +25,7 @@ public class UserRequestController {
 
 	@RequestMapping(value = "", method = { RequestMethod.GET })
 	public List<UserRequestDto> getRequests() {
-		logger.debug("getRequests");
+		logger.info("getRequests");
 
 		List<UserRequest> requests = userRequestRepository.findAll();
 
@@ -39,7 +39,7 @@ public class UserRequestController {
 
 	@RequestMapping(value = "/{id}", method = { RequestMethod.GET })
 	public UserRequestDto getRequestById(Integer id) {
-		logger.debug("getRequestById");
+		logger.info("getRequestById");
 
 		UserRequest request = userRequestRepository.findOne(id);
 		return UserRequestDto.fromUserRequest(request);
