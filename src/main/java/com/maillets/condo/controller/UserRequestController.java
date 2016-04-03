@@ -6,6 +6,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,10 +40,20 @@ public class UserRequestController {
 	}
 
 	@RequestMapping(value = "/{id}", method = { RequestMethod.GET })
-	public UserRequestDto getRequestById(Integer id) {
+	public UserRequestDto getRequestById(@PathVariable(value = "id") Integer id) {
 		logger.info("getRequestById");
 
 		UserRequest request = userRequestRepository.findOne(id);
 		return UserRequestDto.fromUserRequest(request);
+	}
+
+	@RequestMapping(value = "", method = { RequestMethod.POST })
+	public void createRequest(@RequestBody UserRequestDto dto) {
+		logger.info("createUserRequest");
+	}
+
+	@RequestMapping(value = "/{id}", method = { RequestMethod.PUT })
+	public void updateRequest(@PathVariable(value = "id") Integer id, @RequestBody UserRequestDto dto) {
+		logger.info("updateRequest");
 	}
 }
