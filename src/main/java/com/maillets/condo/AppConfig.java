@@ -1,4 +1,4 @@
-package com.maillets.condo.config;
+package com.maillets.condo;
 
 import java.util.Random;
 
@@ -24,7 +24,7 @@ public class AppConfig {
 	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
 	@Autowired
-	UserRequestRepository userRequestRepository;
+	private UserRequestRepository userRequestRepository;
 
 	@Bean
 	CommandLineRunner init() {
